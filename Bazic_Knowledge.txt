@@ -1,0 +1,82 @@
+HTTP:
+1. CONNECT: CONNECT server.example.com:80 HTTP/1.1 : start two way 
+communications with the requested resource
+2. DELETE: DELETE /file.html HTTP/1.1 
+3. GET /index.html
+4. HEAD instead requested with the HTTP GET - could read its Content-length 
+header to check the filesize without actually
+5. OPTION requested permitted communication options for a given URL or server
+: OPTIONS /index.html HTTP/1.1 ;  OPTIONS * HTTP/1.1
+6. PATCH appllies partial modifications to a resource: PATCH /file.txt HTTP/1.1
+7. The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header: POST /test
+9. The HTTP PUT request method creates "a new resource or replaces a representation" of the target resource 
+with the request payload.: PUT /new.html HTTP/1.1
+10. The HTTP TRACE method performs a message loop-back test along the path to the target resource, 
+providing a useful debugging mechanism : TRACE /index.html
+
+
+===============================================================
+1. Server side rendering: return html direct from server 
+2. Client side rendering: when return div empty, with help js.file will render and append data (work with API)
+
+===============================================================
+I.Express is a Node.js web server project:
+1. A routing + sugar layer on top of Node.js HTTP server
+2. Declaretive routing
+3. Basic middleware pattern
+
+Install: npm install express
+
+===============================================================
+II.Nodemon / Debug: helps devenlop node.js  bacsed applications by automatically restarting the node application when the diretory are detected
+
+Install: npm install nodemon --save-dev 
+// --save-dev: save into dependencies, you don't use when run real project
+
+Run: 1. nodemon index.js
+     2. In file package.json add: 
+          "scripts": {
+          "start": "nodemon index.js",
+        To run in terminal: npm start
+
+Debug: use breakpoint to debug
+===============================================================
+III.Morgan: HTTP request logger middleware for node.js
+
+Install: npm install morgan
+
+Run: initial: const morgan = require('morgan')
+     app.use(morgan('combined'))
+===============================================================
+IV.Template engines (handlebars): giúp viết file.html ở nơi khác index.js cho gọn hơn!
+A Handlebars view engine for Express which doesn't suck
+
+Install: npm install express-handlebars
+===============================================================
+V.Sass: diretory save file.css
+
+Install: npm install node-sass --save-dev
+
+USE: 1. Make file app.scss in direct /scss 
+     2. In file package.json: add
+      "scripts": {
+    "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css", }
+
+    node-sass <input> <output>
+    --watch: auto update change file.scss to file.css
+    3. Run: npm run watch 
+
+Write a nodemon.json:
+{
+    "ext": "js json scss hbs"
+}
+// file can be change when we config file 
+================================================================
+Query parameters: data send by URL
+
+<form> :
+- Request URL: action="" nếu để trống thì submit tại trang còn không thì sẽ chuyển sang trang web được nhập trong action
+- Request method: method
+
+Method: POST
+- to serve get data use: req.body (GET: req.query)`~~~-_

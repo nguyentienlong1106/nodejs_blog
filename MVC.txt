@@ -1,0 +1,13 @@
+MVC: Model View Controller
+
+View: html, css
+Model: DB, MySQL
+
+// Process
+Controller: Browser -> Web Server -> Router -> Dispathcher -> Controller (connect with view and model)-> Controller -> Web Server -> back to Browser
+
+===============================================================
+Mô hình client - server
+
+===============================================================
+[MVC] Routers & Controllers
