@@ -22,7 +22,7 @@
     "src/**/*.{js,json,scss}":"prettier --single-quote --trailing-comma all --tab-width 4 --write --bracket-same-line true"
   },
   "husky": {
-    "book": {
+    "hooks": {
       "pre-commit": "lint-staged"
     }
   },
