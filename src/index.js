@@ -14,14 +14,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Midleware
 
 // Post data from a form
-                                app.use(
+app.use(
     express.urlencoded({
         extended: true,
     }),
 );
 
 // Post data from a JSON
-                         app.use(express.json());
+app.use(express.json());
 
 // HTTP log
 // app.use(morgan('combined'));
@@ -36,9 +36,9 @@ app.engine(
 app.set('view engine', 'hbs');
 
 // Chỉ đường dẫn tới file
-                          app.set(
-                              'views',path.join(__dirname, 'resources/views'),
-                          );
+app.set(
+    'views',path.join(__dirname, 'resources/views'),
+);
 
 // Home, search
 // route init
@@ -46,7 +46,14 @@ route(app);
 
 //
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+  
+  
+  console.log(
+      
+      
+      
+      
+      `Example app listening on port ${port}`);
 });
 
 //127.0.0.1

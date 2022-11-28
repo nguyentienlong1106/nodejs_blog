@@ -19,7 +19,7 @@
   "author": "Long",
   "license": "ISC",
   "lint-staged":{
-    "src/**/*.{js,json,scss}":"prettier --single-quote --trailing-comma all --tab-width 4 --write"
+    "src/**/*.{js,json,scss}":"prettier --ignore-unknown --stdin --stdin-filepath \"{}\""
   },
   "husky": {
     "book": {
