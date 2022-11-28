@@ -37,7 +37,9 @@ app.set('view engine', 'hbs');
 
 // Chỉ đường dẫn tới file
 app.set(
-    'views',path.join(__dirname, 'resources/views'),
+    'views',
+
+    path.join(__dirname, 'resources/views'),
 );
 
 // Home, search
@@ -46,14 +48,7 @@ route(app);
 
 //
 app.listen(port, () => {
-  
-  
-  console.log(
-      
-      
-      
-      
-      `Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${port}`);
 });
 
 //127.0.0.1
