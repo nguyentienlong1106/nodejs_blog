@@ -5,9 +5,9 @@ class SiteController {
     }
 
     // [GET] /search
-    show(req, res){
+    search(req, res){
         res.render('search');
     }
 }
 
-module.exports = new SiteController
+module.exports = new SiteController();
