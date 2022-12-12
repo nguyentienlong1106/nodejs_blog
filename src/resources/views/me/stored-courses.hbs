@@ -1,0 +1,86 @@
+<div class="mt-4">
+    <div class="display: flex; justify-content: space-between;">
+      <h3>My courses: </h3>
+
+      <a href="/me/trash/courses">TRASH</a>
+    </div>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name couses</th>
+                <th scope="col">Image</th>
+                <th scope="col" colspan="2">Time regist</th>
+                {{!-- <th scope="col ">Config</th> --}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>  {{!-- helper function in template engine index.js --}}
+                    <td>{{this.name}}</td>
+                    <td><img src="{{this.image}}" style="width: 60px;" class="card-img-top" alt="{{this.name}}"></td>
+                    <td>{{this.createdAt}}</td>
+                    <td>
+                        <a href="/courses/{{this._id}}/edit" class="btn btn-link">UPDATE</a>
+                        <a href="" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#delete-course-model" data-id="{{this._id}}">DELETE</a>
+                    </td>
+                </tr>
+                {{else}}
+                <tr>
+                  <td colspan="5" class="text-center">
+                    You haven't register any course.
+                    <a href="/courses/create">Register</a>
+                  </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>
+
+{{!--  Confirm Delete --}}
+<!-- Modal -->
+<div class="modal fade" id="delete-course-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete this course?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Deny</button>
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form method="post" name="delete-course-form"></form>
+
+<script>
+    var courseId;
+    var deleteCourseModel = document.getElementById('delete-course-model');
+    var btnDeleteCourse = document.getElementById('btn-delete-course');
+        var deleteForm = document.forms['delete-course-form'];
+
+    // when click delete
+    deleteCourseModel.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        courseId = button.getAttribute('data-id')
+    })
+
+    // when click delete button confirm
+    btnDeleteCourse.onclick = function () {
+        deleteForm.action = '/courses/' + courseId + '?_method=DELETE';
+        deleteForm.submit();
+    }
+    
+</script>

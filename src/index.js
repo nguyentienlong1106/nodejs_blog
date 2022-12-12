@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const hbs = require('express-handlebars');
-
+const methodOverride = require('method-override');
 
 // import routes
 const route = require('./routes');
@@ -17,6 +17,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Midleware
+app.use(methodOverride('_method'));
 
 // Post data from a form
 app.use(
@@ -36,7 +37,11 @@ app.engine(
     'hbs',
     hbs.engine({
         extname: '.hbs', // set file.handlebars -> file.hbs
+        helpers: {
+            sum: (a, b) => a + b, // MAKE function in file.hbs
+        },
     }),
+    
 );
 app.set('view engine', 'hbs');
 
